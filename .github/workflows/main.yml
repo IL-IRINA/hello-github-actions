@@ -9,11 +9,19 @@ jobs:
     name: Hello world action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: ./action-a
+      - name: checkout-repo
+        uses: actions/checkout@v1
+      - name: print-to-file
+        uses: ./action-a
         with:
           MY_NAME: "Liza"
-      - uses: actions/upload-artifact@v2
+      - name: upload-file
+        uses: actions/upload-artifact@v2
         with:
           name: greetings-file
           path: greetings.txt
+      - name: download-file
+        uses: actions/download-artifact@v2
+        with:
+          name: greetings-file
+        needs: upload-file

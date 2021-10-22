@@ -8,11 +8,6 @@ inputs:
     required: true
     default: "World"
 
-  FILE_NAME:
-    description: "File where to write greeting"
-    required: true
-    default: "greetings.txt"
-
 runs:
   using: "docker"
   image: "Dockerfile"
